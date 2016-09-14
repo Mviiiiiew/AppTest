@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.manzx.myapplication.R;
 
@@ -13,6 +14,7 @@ import com.manzx.myapplication.R;
  * Created by nuuneoi on 11/16/2014.
  */
 public class SecondFragment extends Fragment {
+
 
     public SecondFragment() {
         super();
@@ -35,6 +37,17 @@ public class SecondFragment extends Fragment {
 
     private void initInstances(View rootView) {
         // Init 'View' instance(s) with rootView.findViewById here
+        Button btnBack = (Button) rootView.findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.contentContainer,MainFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit();
+
+            }
+        });
     }
 
     @Override

@@ -2,29 +2,26 @@ package com.manzx.myapplication.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.manzx.myapplication.R;
-import com.manzx.myapplication.view.PhotoListItem;
 
 
 /**
  * Created by nuuneoi on 11/16/2014.
  */
-public class MainFragment extends Fragment {
-    ViewPager viewPager;
+public class FragmentPhoto extends Fragment {
+    Button btnStor;
 
-    public MainFragment() {
+    public FragmentPhoto() {
         super();
     }
 
-    public static MainFragment newInstance() {
-        MainFragment fragment = new MainFragment();
+    public static FragmentPhoto newInstance() {
+        FragmentPhoto fragment = new FragmentPhoto();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -33,46 +30,34 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_photo, container, false);
         initInstances(rootView);
         return rootView;
     }
 
     private void initInstances(View rootView) {
         // Init 'View' instance(s) with rootView.findViewById here
-        viewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
-        viewPager.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
+        btnStor = (Button) rootView.findViewById(R.id.btnStor);
+        btnStor.setOnClickListener(new View.OnClickListener() {
             @Override
-            public Fragment getItem(int position) {
-
-                switch (position) {
-                    case 0:
-                        return FragmentPhoto.newInstance();
-                    case 1:
-                        return FragmentPhotoTwo.newInstance();
-                    case 2:
-                        return FragmentPhotoThree.newInstance();
-                }
-                return null;
-            }
-
-            @Override
-            public int getCount() {
-
-                return 3;
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction()
+                        .add(R.id.contentContainer,FragmentPhotoThree.newInstance())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
-
-
     }
 
     @Override
     public void onStart() {
+
         super.onStart();
     }
 
     @Override
     public void onStop() {
+
         super.onStop();
     }
 

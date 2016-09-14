@@ -2,29 +2,24 @@ package com.manzx.myapplication.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.manzx.myapplication.R;
-import com.manzx.myapplication.view.PhotoListItem;
 
 
 /**
  * Created by nuuneoi on 11/16/2014.
  */
-public class MainFragment extends Fragment {
-    ViewPager viewPager;
+public class FragmentPhotoThree extends Fragment {
 
-    public MainFragment() {
+    public FragmentPhotoThree() {
         super();
     }
 
-    public static MainFragment newInstance() {
-        MainFragment fragment = new MainFragment();
+    public static FragmentPhotoThree newInstance() {
+        FragmentPhotoThree fragment = new FragmentPhotoThree();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -33,37 +28,13 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_photo3, container, false);
         initInstances(rootView);
         return rootView;
     }
 
     private void initInstances(View rootView) {
         // Init 'View' instance(s) with rootView.findViewById here
-        viewPager = (ViewPager) rootView.findViewById(R.id.viewPager);
-        viewPager.setAdapter(new FragmentStatePagerAdapter(getChildFragmentManager()) {
-            @Override
-            public Fragment getItem(int position) {
-
-                switch (position) {
-                    case 0:
-                        return FragmentPhoto.newInstance();
-                    case 1:
-                        return FragmentPhotoTwo.newInstance();
-                    case 2:
-                        return FragmentPhotoThree.newInstance();
-                }
-                return null;
-            }
-
-            @Override
-            public int getCount() {
-
-                return 3;
-            }
-        });
-
-
     }
 
     @Override
