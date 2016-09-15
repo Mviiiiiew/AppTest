@@ -1,18 +1,25 @@
 package com.manzx.myapplication.fragment;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.manzx.myapplication.R;
+
+import java.util.ArrayList;
 
 
 /**
  * Created by nuuneoi on 11/16/2014.
  */
 public class FragmentPhotoTwo extends Fragment {
+
 
     public FragmentPhotoTwo() {
         super();
@@ -28,10 +35,11 @@ public class FragmentPhotoTwo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         View rootView = inflater.inflate(R.layout.fragment_photo2, container, false);
         initInstances(rootView);
         return rootView;
-    }
+      }
 
     private void initInstances(View rootView) {
         // Init 'View' instance(s) with rootView.findViewById here

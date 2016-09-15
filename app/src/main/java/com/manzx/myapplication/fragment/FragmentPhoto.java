@@ -1,5 +1,6 @@
 package com.manzx.myapplication.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.manzx.myapplication.R;
+import com.manzx.myapplication.Database.Main2Activity;
 
 
 /**
@@ -41,10 +43,11 @@ public class FragmentPhoto extends Fragment {
         btnStor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getFragmentManager().beginTransaction()
-                        .add(R.id.contentContainer,FragmentPhotoThree.newInstance())
-                        .addToBackStack(null)
-                        .commit();
+                Intent intent = new Intent(getContext(),
+                        Main2Activity.class);
+                startActivity(intent);
+
+
             }
         });
     }
