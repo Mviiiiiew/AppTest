@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.inthecheesefactory.thecheeselibrary.view.SlidingTabLayout;
 import com.manzx.myapplication.R;
 import com.manzx.myapplication.view.PhotoListItem;
 
@@ -18,6 +19,7 @@ import com.manzx.myapplication.view.PhotoListItem;
  */
 public class MainFragment extends Fragment {
     ViewPager viewPager;
+    private SlidingTabLayout slidingTabLayout;
 
     public MainFragment() {
         super();
@@ -61,9 +63,25 @@ public class MainFragment extends Fragment {
 
                 return 3;
             }
+
+            @Override
+            public CharSequence getPageTitle(int position) {
+                switch (position){
+                    case  0 :
+                        return "                    Salasdasdasde                     ";
+                    case  1 :
+                        return "                   Repoasdasdasdrt                     ";
+                    case 2:
+                        return "                   Setasdasdasdting                     ";
+
+                    default:
+                        return null;
+                }
+            }
         });
 
-
+        slidingTabLayout = (SlidingTabLayout) rootView.findViewById(R.id.slidingTabLayout);
+        slidingTabLayout.setViewPager(viewPager);
     }
 
     @Override
